@@ -80,5 +80,21 @@ sudo systemctl enable zabbix-server apache2
 
 Решение
 Клонировала свою виртуальную машину со всеми действующими настройками и установила связь между ними
+На обеих машинах выполнила следующие действия:
+
+sudo -s
+Добавления репозитория
+wget https://repo.zabbix.com/zabbix/7.4/release/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.4+ubuntu24.04_all.deb
+dpkg -i zabbix-release_latest_7.4+ubuntu24.04_all.deb
+
+установка Zabbix агента
+apt install zabbix-agent
+
+Запуск процесса Zabbix агента и настройте его запуск при загрузке ОС.
+
+systemctl restart zabbix-agent
+systemctl enable zabbix-agent
+Корректировка файла zabbix_agentd.conf:
+
 
 ---
