@@ -64,11 +64,11 @@ zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psq
 sed -i 's/# DBPassword=/DBPassword=12345678/g' /etc/zabbix/zabbix_server.conf
 
 Запускаем Zabbix server, Zabbix agent и веб-сервер:
-sudo systemctl restart zabbix-server apache2 # zabbix-agent 
-sudo systemctl enable zabbix-server apache2 # zabbix-agent
+sudo systemctl restart zabbix-server apache2 
+sudo systemctl enable zabbix-server apache2 
 
 ---
-Задание 2
+#Задание 2
 Установите Zabbix Agent на два хоста.
 
 Процесс выполнения
@@ -80,4 +80,5 @@ sudo systemctl enable zabbix-server apache2 # zabbix-agent
 
 Решение
 Клонировала свою виртуальную машину со всеми действующими настройками и установила связь между ними
+
 ---
