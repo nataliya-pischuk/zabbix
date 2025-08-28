@@ -63,12 +63,17 @@ zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psq
 Задаем пароль в конфиге zabbix_server
 sed -i 's/# DBPassword=/DBPassword=12345678/g' /etc/zabbix/zabbix_server.conf
 
+![alt text](img/server host.JPG)
+
 Запускаем Zabbix server, Zabbix agent и веб-сервер:
 sudo systemctl restart zabbix-server apache2 
 sudo systemctl enable zabbix-server apache2 
 
+#### Авторизация в zabbix
+![alt text](img/init.JPG)
+
 ---
-#Задание 2
+# Задание 2
 Установите Zabbix Agent на два хоста.
 
 Процесс выполнения
@@ -78,7 +83,7 @@ sudo systemctl enable zabbix-server apache2
 Добавьте Zabbix Agentов в раздел Configuration > Hosts вашего Zabbix Servera.
 Проверьте, что в разделе Latest Data начали появляться данные с добавленных агентов.
 
-Решение
+# Решение
 Клонировала свою виртуальную машину со всеми действующими настройками и установила связь между ними
 На обеих машинах выполнила следующие действия:
 
@@ -90,11 +95,17 @@ dpkg -i zabbix-release_latest_7.4+ubuntu24.04_all.deb
 установка Zabbix агента
 apt install zabbix-agent
 
-Запуск процесса Zabbix агента и настройте его запуск при загрузке ОС.
+Запуск процесса Zabbix агента и настройка его.
 
 systemctl restart zabbix-agent
 systemctl enable zabbix-agent
-Корректировка файла zabbix_agentd.conf:
+![alt text](img/start agent.JPG)
 
+Корректировка файла zabbix_agentd.conf:
+![alt text](img/agent.JPG)
+
+### Результат
+![alt text](img/Monitoring.JPG)
+![alt text](img/Result.JPG)
 
 ---
