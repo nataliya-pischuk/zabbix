@@ -106,6 +106,6 @@ systemctl enable zabbix-agent
 
 ### Результат
 ![alt text](img/Monitoring.JPG)
-![alt text](img/Result.JPG)
+![alt text](img/result.JPG)
 
 ---
