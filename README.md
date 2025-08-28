@@ -63,7 +63,8 @@ zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psq
 Задаем пароль в конфиге zabbix_server
 sed -i 's/# DBPassword=/DBPassword=12345678/g' /etc/zabbix/zabbix_server.conf
 
-![alt text](img/server host.JPG)
+В конфигурационном файле zabbix_server.conf указываем адрес zabbix сервера
+![alt text](img/server.JPG)
 
 Запускаем Zabbix server, Zabbix agent и веб-сервер:
 sudo systemctl restart zabbix-server apache2 
