@@ -25,52 +25,18 @@
 
 ### Задание 1 
 
-Установите Zabbix Server с веб-интерфейсом.
+Задание 1
+Создайте свой шаблон, в котором будут элементы данных, мониторящие загрузку CPU и RAM хоста.
 
-#### Процесс выполнения
-1. Выполняя ДЗ, сверяйтесь с процессом отражённым в записи лекции.
-2. Установите PostgreSQL. Для установки достаточна та версия, что есть в системном репозитороии Debian 11.
-3. Пользуясь конфигуратором команд с официального сайта, составьте набор команд для установки последней версии Zabbix с поддержкой PostgreSQL и Apache.
-4. Выполните все необходимые команды для установки Zabbix Server и Zabbix Web Server.
+Процесс выполнения
+Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+В веб-интерфейсе Zabbix Servera в разделе Templates создайте новый шаблон
+Создайте Item который будет собирать информацию об загрузке CPU в процентах
+Создайте Item который будет собирать информацию об загрузке RAM в процентах
+Требования к результату
+ Прикрепите в файл README.md скриншот страницы шаблона с названием «Задание 1»
 
-#### Требования к результатам 
-1. Прикрепите в файл README.md скриншот авторизации в админке.
-2. Приложите в файл README.md текст использованных команд в GitHub.
-
-У меня основная машина работы это Ubuntu 24.04. Zabbix устанавливала для нее
-Источник: https://www.zabbix.com/ru/download?zabbix=7.4&os_distribution=ubuntu&os_version=24.04&components=agent&db=&ws=
-
-Предварительно установила Postgress
-Установите PostgreSQL:
-sudo apt install postgresql
-
-Добавление репозитория
-sudo -s
-wget https://repo.zabbix.com/zabbix/7.4/release/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.4+ubuntu24.04_all.deb
-dpkg -i zabbix-release_latest_7.4+ubuntu24.04_all.deb
-apt update
-
-Установка основных компонентов
-apt install zabbix-server-pgsql zabbix-frontend-php php8.3-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agentsudo -u postgres createuser --pwprompt zabbix
-
-sudo -u postgres createuser --pwprompt zabbix
-sudo -u postgres createdb -O zabbix zabbix
-
-
-Импортируем схему:
-zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
-
-Задаем пароль в конфиге zabbix_server
-sed -i 's/# DBPassword=/DBPassword=12345678/g' /etc/zabbix/zabbix_server.conf
-
-В конфигурационном файле zabbix_server.conf указываем адрес zabbix сервера
-![alt text](img/server.JPG)
-
-Запускаем Zabbix server, Zabbix agent и веб-сервер:
-sudo systemctl restart zabbix-server apache2 
-sudo systemctl enable zabbix-server apache2 
-
-#### Авторизация в zabbix
+#### Задание 1
 ![alt text](img/init.JPG)
 
 ---
